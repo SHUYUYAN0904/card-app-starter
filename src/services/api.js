@@ -18,19 +18,40 @@ const API_URL = process.env.REACT_APP_API_URL || "";
 
 export async function getCards() {
   // GET /allcards (provided as reference)
-  const res = await fetch(`${API_URL}/allcards`);
+  const res = await fetch(`${API_URL}/cards`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
 }
 
-export function addCard(card) {
+export async function addCard(card) {
   // TODO: implement POST /addcard
+  const res = await fetch(`${API_URL}/cards/new`, {
+    method:"POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(card)
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
 }
 
-export function updateCard(id, card) {
+export async function updateCard(id, card) {
   // TODO: implement PUT /updatecard/:id
+  const res = await fetch(`${API_URL}/cards/${id}/edit`, {
+    method:"PUT",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(card)
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
 }
 
-export function deleteCard(id) {
+export async function deleteCard(id) {
   // TODO: implement DELETE /deletecard/:id
+  const res = await fetch(`${API_URL}/cards/${id}/delete`,{
+    method:"DELETE"
+  });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
 }
