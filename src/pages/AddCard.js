@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CardForm from "./components/CardForm";
-import { addCard } from "./services/api";
+import CardForm from "../components/CardForm";
+import { addCard } from "../services/api";
 
 export default function AddCard() {
   const navigate = useNavigate();
@@ -25,14 +25,22 @@ export default function AddCard() {
   };
 
   return (
-    <main style={styles.container}>
-      <h2 style={styles.title}>Add New Card</h2>
+    <main 
+    // style={styles.container}
+    >
+      <h2 
+      // style={styles.title}
+      >Add New Card</h2>
 
-      {error && <p style={styles.error}>{error}</p>}
+      {error && <p 
+      // style={styles.error}
+      >{error}</p>}
 
       <CardForm onSubmit={handleAddCard} disabled={loading} />
 
-      {loading && <p style={styles.loading}>Adding card...</p>}
+      {loading && <p 
+      // style={styles.loading}
+      >Adding card...</p>}
     </main>
   );
 }
